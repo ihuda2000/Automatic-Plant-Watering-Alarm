@@ -1,1 +1,16 @@
+odeMCU / ESP8266 (e.g., Amica or LoLin)
+Soil Moisture Sensor (analog) + Piezo Buzzer
 
+Connections:
+--------------------------------------------
+Soil Sensor VCC  -> 3V3
+Soil Sensor GND  -> GND
+Soil Sensor AOUT -> A0      (analog input, 0–1023)
+
+Piezo/Buzzer +   -> D5 (GPIO14)   (uses tone())
+Piezo/Buzzer -   -> GND
+
+LED   -> D4 (GPIO2) through 220Ω to GND (alarm indicator)
+
+Power: 5V USB to the ESP8266 board. Use the sensor’s 3.3V from the board.
+Note: Many analog moisture sensors read LOWER when wet and HIGHER when dry.
