@@ -1,4 +1,5 @@
-odeMCU / ESP8266 (e.g., Amica or LoLin)
+## Wiring Diagram
+NodeMCU / ESP8266 (e.g., Amica or LoLin)
 Soil Moisture Sensor (analog) + Piezo Buzzer
 
 Connections:
@@ -14,3 +15,39 @@ LED   -> D4 (GPIO2) through 220Ω to GND (alarm indicator)
 
 Power: 5V USB to the ESP8266 board. Use the sensor’s 3.3V from the board.
 Note: Many analog moisture sensors read LOWER when wet and HIGHER when dry.
+
+
+## Block Diagram
++-----------------------+
+|  Capacitive Soil      |
+|  Moisture Sensor      |
+| (Analog 0–1023)       |
++-----------+-----------+
+            |
+            |  Analog (A0)
+            |
++-----------v-----------+
+|     ESP8266 (NodeMCU) |
+|  - Reads moisture     |
+|  - Hosts web server   |
+|  - Stores config      |
+|    (EEPROM)           |
++-----+-----------+-----+
+      |           |
+      |           | GPIO (D5)
+      |           +------------------+
+      |                              |
+      |                    +---------v---------+
+      |                    |  Piezo Buzzer     |
+      |                    |  (Audible Alarm)  |
+      |                    +-------------------+
+      |
+      | Wi-Fi (STA or AP)
+      |
++-----v-------------------+
+|   Web Browser / UI      |
+| - View moisture value   |
+| - Set threshold         |
+| - Toggle alarm          |
+| - Beep test             |
++-------------------------+
